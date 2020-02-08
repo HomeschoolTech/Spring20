@@ -1,0 +1,40 @@
+1. Why do we need data structures with varying numbers of elements?
+so we can add elements to the group
+2. What four kinds of storage do we have for a typical program?
+code storage, static storage, free store, stack storage
+3. What is the free store? What other name is commonly used for it? What operators support it?
+the other space on a computer not directly used in our code, the heap, new and delete
+4. What is a dereference operator and why do we need one?
+it show what the value of the pointed to address is. to see the value that a pointer points to
+5. What is an address? How are memory addresses manipulated in C++?
+a number that refers to a space in memory, through pointers
+6. What information about a pointed-to object does a pointer have? What useful information does it lack?
+the address, the type, the value. how many "things" its pointing to
+7. What can a pointer point to?
+an address
+8. What is a leak?
+a loss of memory
+9. What is a resource?
+data that is acquired somewhere else
+10. How can we initialize a pointer?
+type* x = &n
+11. What is a null pointer? When do we need to use one?
+a pointer set to zero. when we need to check whether the value of a pointer is zero
+12. When do we need a pointer (instead of a reference or a named object)?
+when we need to refer to memory, or find a point in an array
+13. What is a destructor? When do we want one?
+deallocates information on the free store, when we allocate information on free store and have finished our
+program
+14. When do we want a virtual destructor?
+when a we have a virtual function
+15. How are destructors for members called?
+when the object containing the member is destroyed
+16. What is a cast? When do we need to use one?
+an explicit type converter, when we need to remove a const, or convert between related pointer types
+17. How do we access a member of a class through a pointer?
+using an ->
+18. What is a doubly-linked list?
+a list with links that refer to both their successors and predecessors
+19. What is this and when do we need to use it?
+a call to the member that called the function, when we want to refer specifically to the member that called the
+function

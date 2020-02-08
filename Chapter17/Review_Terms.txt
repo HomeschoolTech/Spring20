@@ -1,0 +1,60 @@
+address
+a number that indicates a location in memory
+address of: &
+refers a pointer to a variable
+allocation
+freeing up of space for memory
+cast
+an explicit type conversion
+container
+a place to hold memory
+contents of: *
+asks for the contents of the address that a pointer references
+deallocation
+removing data from memory
+delete
+frees memory for an individual object allocated by new
+delete[]
+frees memory for an array of objects allocated by new 
+dereference
+a call to what a pointer points to
+destructor
+a function that is called when an object goes out of scope
+free store
+the storage not directly used by our program
+link
+a data point in a list whose successors and predecessors can be easily found
+list
+a group of linked objects
+member access: –>
+member access operator through a pointer
+member destructor
+a destructor called by a derived classes destructor
+memory
+a sequence of bytes
+memory leak
+a loss of memory
+new
+allocates space in free store
+null pointer
+the value zero when assigned to a pointer
+nullptr
+calling a null pointer
+pointer
+a type that refers to another object by its address
+range
+the space an array occupies
+resource leak
+when a type does not release all the resources it has after the program is finished
+subscripting
+using the subscript operator
+subscript: [ ]
+the operator that refers to a specific element in a container
+this
+a reference back to the member that called the function
+type conversion
+converting an object of one type into an object of another type
+virtual destructor
+a destructor used used in a base class that calls the destuctor of the derived class's element
+void*
+a pointer initializer that can copy and be set to any type
