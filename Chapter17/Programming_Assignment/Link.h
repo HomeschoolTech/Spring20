@@ -36,25 +36,27 @@ Link* Link::erase(){
 	return this -> succ;
 }
 Link* Link::find(const string& s){
-	while(this){
-		if(this -> value == s) return this;
-		this = this -> succ;
+	Link* p = this; // Added p, change "this" to p
+	while(p->value != s){ 
+		p = p->succ;	
+		if(!p) return nullptr; 
 	}
-	return nullptr;
+	return p;
 }
 Link* Link::advance(int n) {
 	if(this == nullptr) return nullptr;
+	Link* p = this; // Added p, chaned this to p
 	if(0 < n){
 		while(n--){
-			if(this -> succ == nullptr) return nullptr;
-			this = this -> succ;
+			if( p -> succ == nullptr) return nullptr;
+			p = p -> succ;
 		}
 	}
 	else if(n < 0){
 		while(n++){
-			if(this -> prev == nullptr) return nullptr;
-			this = this -> prev;
+			if(p -> prev == nullptr) return nullptr;
+			p = p -> prev;
 		}
 	}
-	return this;		
+	return p;		
 }
