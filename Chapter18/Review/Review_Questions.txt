@@ -1,34 +1,54 @@
 1. what does “Caveat emptor!” mean?
 good advice
+
 2. What is the default meaning of copying for class objects?
-copy all the data members
+copy all (and only) the data members
+
 3. When is the default meaning of copying of class objects appropriate? When is it inappropriate?
 whenever we are not copying with pointer, when copying with a pointer
+* Whenever a class aquires resources outside of data members
+
 4. What is a copy constructor?
-a constructor for a class that defines what it means to copy
+a constructor for a class that defines what it means to copy from an object of the same type
+
 5. What is a copy assignment?
 a definition of what it means to copy using '='
+
 6. What is the difference between copy assignment and copy initialization?
 copy assignment uses two already created vector. copy initialization creates one vector with another
+
 7. What is shallow copy? What is deep copy?
 shallow copy is copying pointers and references. deep copy is copying the values that pointers and references point to
+* Deep copy copies all resources, shaloow copy share resources
+
 8. How does the copy of a vector compare to its source?
 it is a deep copy, so it is exactly the same
+
 9. What are the five “essential operations” for a class?
-constructors, copy constructors, move constructors, destructors, default constructors
+constructors, default constructor
+copy constructors, move constructors, destructors, copy assignment, and move assignment
+
 10. What is an explicit constructor? Where would you prefer one over the (default) alternative?
 a constuctor that only allows its type to be converted in a specific way, whenever you don't want to be able to convert
 in multiple ways
+* When you don't want the compiler to convert types automatically in contrucots 
+
 11. What operations may be invoked implicitly for a class object?
 initialization, seting the value of
+
 12. What is an array?
 a group of objects of the same type which have no memory gaps between them
+
 13. How do you copy an array?
 by copying each element of the array
+
 14. How do you initialize an array?
 with [] brackets
+int a[12] ={1, 2, 3, 4}
+
 15. When should you prefer a pointer argument over a reference argument? Why?
 when you need to keep track of a value on the free store.
+
 16. What is a C-style string?
 an array of characters terminated with zero
 17. What is a palindrome?

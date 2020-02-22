@@ -1,5 +1,9 @@
 //this is the portion of the drill on arrays
 #include "iostream"
+
+
+int ga[10] = { 1,2,4,8,16,32,64,128,256,512};
+
 int fact(int n){
 	if(n == 1) return n;
 	for(int i = n-1; i > 0; --i){
@@ -7,18 +11,21 @@ int fact(int n){
 	}
 	return n;
 }
-int ga[10] = { 1,2,4,8,16,32,64,128,256,512};
 
 int f(int ar[], int n){
+	std::cin >> n;
+	int newarray[n]; 
+	newarray[0] = 1;
+
 	int la[10];
 	for(int i = 0; i < 10; ++i){
 		la[i] = ga[i];
 		std::cout << la[i] << ", ";
 	}
 	std::cout << std::endl;
-	int* p = new int [10];
+	int* p = new int [n];
 	int* p1 = p; 
-	for(int i = 0; i < 10; ++i){
+	for(int i = 0; i < n; ++i){
 		p[i] = ar[i];
 		std::cout << p[i] << ", ";	
 	}

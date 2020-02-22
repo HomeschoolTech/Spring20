@@ -10,6 +10,10 @@ int main(){
 	int* i = new int[4];
 	int* i2 = new int [7];
 	std::cout << "heap grows: " << i << ", " << i2 << std::endl;
+
+
+	delete[] i;
+	delete[] i2;
 }
 //the stack grows toward lower addresses
 //the free store grows toward higher addresss

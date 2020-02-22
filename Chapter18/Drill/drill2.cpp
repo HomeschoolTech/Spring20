@@ -1,6 +1,13 @@
 //vector portion of drill
-#include "std_lib_facilities.h"
-vector <int> gv = {1,2,4,8,16,32,64,128,256,512};
+//#include "std_lib_facilities.h"
+
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+vector<int> gv{1,2,4,8,16,32,64,128,256,512};
 int fact(int n){
        if(n == 1) return n;
        for(int i = n-1; i > 0; --i){
@@ -9,21 +16,21 @@ int fact(int n){
        return n;
 }
 
-int f(vector <int> v){
+void f(vector <int>& v){
 	vector <int> lv(v.size());
-	for(auto& i : gv){
-		lv.push_back(gv[i]);
-		cout << lv[i] << ", ";
+	for(auto& val : gv){
+		lv.push_back(val);
+		cout << val << ", ";
 	}
 	cout << endl;
 	vector <int> v2 = v;
-	for(auto& i : v2){
-		cout << v2[i] << ", ";
+	for(auto& val : v2){
+		cout << val << ", ";
 	}
 	cout << endl;
 }
 int main(){
 	f(gv);
-	vector <int> vv = {fact(1),fact(2),fact(3),fact(4),fact(5),fact(6),fact(7),fact(8),fact(9), fact(10)};
+	vector<int> vv{fact(1),fact(2),fact(3),fact(4),fact(5),fact(6),fact(7),fact(8),fact(9), fact(10)};
 	f(vv);
 }
