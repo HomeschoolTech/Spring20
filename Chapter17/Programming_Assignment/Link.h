@@ -20,6 +20,7 @@ class Link{
 		Link* prev;
 		Link* succ;
 };
+//no destructor
 Link* Link::insert(Link* n){
 	if(n == nullptr) return this;
 	if(this == nullptr) return n;

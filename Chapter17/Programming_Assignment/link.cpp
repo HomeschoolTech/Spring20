@@ -32,4 +32,5 @@ int main(){
 	std::cout<<std::endl;
 	print_all(greek_gods);
 	std::cout<<std::endl;
+	//none of the Links are deleted at the end
 }
