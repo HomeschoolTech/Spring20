@@ -1,0 +1,24 @@
+array
+a sequence of objects of the same type that don't have gaps in the memory
+array initialization
+creating an array
+copy assignment
+defining what a class means by '='
+copy constructor
+a constructor that defines what it means to intitialize one object with another object of the same type
+deep copy
+copying the values a pointer or reference points to
+default constructor
+the constructor called whenever an object is made(contains predetermined default values)
+essential operations
+operations that are very benefitial to have in a class
+explicit constructor
+a way to constuct an object in only one way
+move assignment
+defining how to use the '=' operator with  certain type
+move construction
+a constuctor that defines hat it means to move an object
+palindrome
+a word that is the same backwards and forwards
+shallow copy
+copying a pointer or reference
