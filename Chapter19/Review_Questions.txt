@@ -1,0 +1,41 @@
+1. why would we want to change the size of a vector?
+so we can add elements to it or remove elements from it
+2. Why would we want to have different element types for different vectors?
+so that we can have vectors that contain values of different types
+3. Why don’t we just always define a vector with a large enough size for all eventualities?
+because that would waste a lot of space
+4. How much spare space do we allocate for a new vector?
+none
+5. When must we copy vector elements to a new location?
+when we run out of spare space
+6. Which vector operations can change the size of a vector after construction?
+resize(), push_back(), and '='
+7. What is the value of a vector after a copy?
+the same a it was before the copy
+8. Which two operations define copy for vector?
+'=' and resize() 
+9. What is the default meaning of copy for class objects?
+copy all the elements
+10. What is a template?
+a way to make a recipe of a function or class for multiple types
+11. What are the two most useful types of template arguments?
+typename T, and int N
+12. What is generic programming?
+writing code that works with a variety of types presented as arguements, as long as those arguement
+types meet specific syntatic and semantic requirements.
+13. How does generic programming differ from object-oriented programming?
+it relys on compile time resolution instead of runtime resolution
+14. How does array differ from vector?
+it doesn't know its size and an add values to space it doesn't own
+15. How does array differ from the built-in array?
+it doesn't easily change to a pointer and it copies properly
+16. How does resize() differ from reserve()?
+resize() makes a new vector and destroys the old one, reserve gets more space
+17. What is a resource? Define and give examples.
+a object that is acquired and must be given back, free-store memory
+18. What is a resource leak?
+not giving a resource back after using it
+19. What is RAII? What problem does it address?
+"Resource Acquisition Is Initialization", forgetting to release a resource
+20. What is unique_ptr good for?
+for keeping a pointer to an object when the original pointer goes out of scope
