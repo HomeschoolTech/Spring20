@@ -1,0 +1,40 @@
+1. #define
+tells the compiler to read one thing as another thing
+2. at()
+checking for out of range index
+3. basic guarantee
+succeeds or throws an exception without any leaked resources
+4. exception
+an error thrown to the function callers
+5. guarantee
+ideals for all code
+6. handle
+a class that allows access to another
+7. instantiation
+the process for generatinf types
+8. macro
+reading one thing as another
+9. owner
+where a resource is given
+10. push_back()
+add an object to the end of a vector
+11. resize()
+change the size of a vector
+12. re-throw
+throwing an exception in a catch block
+13. self-assignment
+make sure we are using the right value
+14. shared_ptr
+a smart pointer that guaruntees deletion and can be copied
+15. specialization
+template instantiation
+16. strong guarantee
+all values are the same after failing
+17. template
+a way to write a function so it can be used by many different types
+18. template parameter
+the change a template provides
+19. throw;
+sends a execption
+20. unique_ptr
+a pointer that cannot point to the same thing as another unique_ptr
