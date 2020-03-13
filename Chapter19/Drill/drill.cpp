@@ -5,20 +5,25 @@
 using namespace std;
 template <typename T>
 struct S{
-	S(T val);
+	S(T value);
 	void print();
-	S get();
+	T& get();
 	S operator=(const T& x);
 private:
 	T val;
 };
+
+template<typename T>
+S<T>::S(T value): val(value) {}
+
 template <typename T>
-S<T>::operator=(const T& x){
+S<T> S<T>::operator=(const T& x){
 	val = x;
+    return *this;
 }
 template <typename T>
-T S::get(){
-	return &val;
+T& S<T>::get(){
+	return val;
 }
 int main(){
 	vector <int> v = {1,2,3};
@@ -31,5 +36,5 @@ int main(){
 	cout << c.get() << endl;
 	cout << d.get() << endl;
 	cout << s.get() << endl;
-	cout << vs.get() << endl;	
+//	cout << vs.get() << endl;	
 }
