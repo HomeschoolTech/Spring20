@@ -6,4 +6,5 @@ int main(){
 	Pair<char, double> y('g', 4.76);
 	x.print_vals();
 	y.print_vals();
+	std::cout << x << std::endl;
 }
