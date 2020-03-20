@@ -28,22 +28,25 @@ shared_pointer<T> make_shared(T obj);
 //    shared_pointer<int> myptr2; // Initializes pointer to nullptr, *counter to 0
 //
 // This guarentees that there is no way we could forget to delete a pointer.
-
+template <typename T>
 class shared_pointer{
 public:
 
     friend shared_pointer<T> make_shared<T>(T obj);
     
-    shared_pointer(){
+    shared_pointer(): counter{nullptr}, pointer{nullptr}{
         // Initialize pointer to nullptr and *counter to 0
     }
 
-    shared_pointer(shared_pointer<T>& p){
+    shared_pointer(shared_pointer<T>& p): pointer{p.pointer}, counter{p.counter}{
         // New object created, increase counter by 1
+	   ++*counter;
     }
     
-    shared_pointer(shared_pointer<T>&& p){
+    shared_pointer(shared_pointer<T>&& p): pointer{p.pointer}, counter{p.counter}{
         // Object moved, set p.ptr and p.count to nullptr for safe destruction
+    	p.pointer = nullptr;
+	p.counter = nullptr;
     }
     
     shared_pointer<T>& operator=(shared_pointer<T>& p){
@@ -51,6 +54,14 @@ public:
         // Assign new values
         // increase  new counter
         // return *this;
+	if(counter == nullptr);
+	else --*counter;	
+	pointer = nullptr;
+	pointer = p.pointer;
+	counter = p.counter;
+	++*counter;
+	return *this;
+
     }
     
     shared_pointer<T>& operator=(shared_pointer<T>&& p){
@@ -58,28 +69,42 @@ public:
         // Assign new values
         // increase  new counter (depending how you implement, may not need)
         // return *this;
+	pointer = nullptr;
+	if(counter == nullptr);
+	else --*counter;	
+	pointer = p.pointer;
+	counter = p.counter;
+	return *this;
     }
     
     ~shared_pointer(){
         // If counter > 1, decrease *counter
         // If counter = 1, delete pointer and counter
-        // Set pointer and counter to nullptr for safe delete of object 
+        // Set pointer and counter to nullptr for safe delete of object
+	//if(*counter > 1) --*counter;
+       	//if(*counter == 1){
+	//	delete pointer;
+	//	delete counter;
     }
 
         
     T& operator*() const {
         // return *pointer, make sure you don't dereference the nullptr
+	//if(pointer == nullptr) throw; 
+	return *pointer;
     }
     
     int ref_count() const{ 
         // return current count, make sure you dont dereference the nullptr
+    	if(counter == nullptr) return 0;
+	else return *counter;
     }
 
 private:
     T* pointer;
     int* counter;
    
-    shared_pointer(T* p){
+    shared_pointer(T* p): pointer{p}, counter{new int (1)}{
         // Initialize pointer to p, and initialize counter to 1
     }
             
@@ -89,7 +114,7 @@ private:
 template<typename T>
 shared_pointer<T> make_shared(T obj){
     return shared_pointer<T>(new T(obj));
-}
+};
 
 
 
