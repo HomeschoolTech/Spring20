@@ -1,22 +1,13 @@
 def triplet():
     summ = 0
-    a = 0
-    b = 0
-    c = 0
     summ_sq = 0
-    while(c < 1000):
-        while(b < 1000):
-            while(a < 1000):
-                summ = a + b + c
-                if summ == 1000:
-                    summ_sq = a*a + b*b
-                    if summ_sq == c*c:
-                        return a*b*c
-                    summ_sq = 0
-                else: summ = 0
-                a = a + 1
-            b = b + 1
-        c = c + 1
+    for c in range(1000):
+        for b in range(1000):
+#            for a in range(1000):
+            a = 1000 - b - c
+            if a*a + b*b == c*c and a+b+c==1000:
+                return a*b*c
+            
 
 x = triplet()
 print(x)

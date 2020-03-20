@@ -51,16 +51,17 @@ const char* findx(const char* s, const char* x){
 	}
 }
 int main(){
-/*	char* ch = "hello world";	//problem1
+/*
+  	char* ch = "hello world";	//problem1
 	char* chp = &ch[10];
 	*chp = 'f';
 	strdup(ch);
-*/	
+	
 	char* sp2 = "abcde";	//problem2
 	char* x = "b";
 	char* xp = x;
 	findx(sp2, x);
-
+*/
 	char* s1 = "acbd";	//problem3
 	char* sp3 = &s1[4];
 	*sp3 = 'd';
@@ -69,4 +70,5 @@ int main(){
 	char* s2 = "abcd";
 	int result = strcmp(s1,s2);
 	std::cout << result << std::endl;
+
 }

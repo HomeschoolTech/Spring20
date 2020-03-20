@@ -36,4 +36,9 @@ int main(){
 	char* s2 = "abcd";
 	int result = strcmp(s1,s2);
 	std::cout << result << std::endl;
+
+	int v = 'a';
+	v -= 97;
+	std::cout << v << std::endl; 
+
 }
