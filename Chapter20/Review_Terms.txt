@@ -1,0 +1,68 @@
+algorithm
+a set of steps that when repeated accomplish a goal
+
+array container
+an array with all the benefits but without the weaknesses
+
+auto
+automatically determines the type of a variable
+
+begin()
+the first element of a sequence
+
+container
+an object that can store a sequence of elements and perform basic operations with them
+
+contiguous
+directly folllowing one after the other
+
+doubly-linked list
+a list with pointers to both the previous and next link
+
+element
+an object in a container
+
+empty sequence
+a sequence where begin() = end()
+
+end()
+one space past the last element of a sequence
+
+erase()
+removes an element from a vector
+
+insert()
+adds an element to a vector
+
+iteration
+moving through the objects in a sequence
+
+iterator
+a object that points to a member of a sequence
+
+linked list
+a list with pointers to more than just the object pointed to
+
+sequence
+a collection of data with a beginning and end
+
+singly-linked list
+a list with a pointer to the next link
+
+size_type
+a type for size() 
+
+STL
+standard template library
+
+traversal
+moving through a container
+
+using
+declares a type alias
+
+type alias
+is created through 'using', make one type synonomous with another
+
+value_type
+the type of the values in a container

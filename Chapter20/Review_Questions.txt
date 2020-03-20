@@ -1,0 +1,56 @@
+1. why does code written by different people look different? Give examples.
+because they may have found different ways to reach the same solution, they may have
+different bracket placement, they may take in different types
+2. What are simple questions we ask of data?
+how much is there, what is the largest value, what is the smallest value, where is the 
+first occurance of x
+3. What are a few different ways of storing data?
+in a file, in an array, as a single value, in a container
+4. What basic operations can we do to a collection of data items?
+multiply all of them by x, sort from largest to smallest, sort in lexiographical order
+5. What are some ideals for the way we store our data?
+be able to add data in any place, be able to look at each value individually, have all
+the data at consecutive addresses
+6. What is an STL sequence?
+a collection of data that can be traversed from beginning to end
+7. What is an STL iterator? What operations does it support?
+something that points to an object in a sequence. comparison, assignment, and *
+8. How do you move an iterator to the next element?
+++x
+9. How do you move an iterator to the previous element?
+for(int i = sizeofcontainer; i > 0; --i){
+	container[i];
+}
+10. What happens if you try to move an iterator past the end of a sequence?
+nothing, but you can implement a range error
+11. What kinds of iterators can you move to the previous element?
+doubly-linked lists
+12. Why is it useful to separate data from algorithms?
+so that the algorithms can be used for many different data groups
+13. What is the STL?
+standard template library
+14. What is a linked list? How does it fundamentally differ from a vector?
+it has pointer to the next element also
+15. What is a link (in a linked list)?
+a data element
+16. What does insert() do? What does erase() do?
+insert() inserts an element into a container. erase() deletes an element from a vector
+17. How do you know if a sequence is empty?
+if begin() = end()
+18. What operations does an iterator for a list provide?
+==,!=, <,, <=, >, >=
+19. How do you iterate over a container using the STL?
+20. When would you use a string rather than a vector?
+when you know that the data members will be chars
+21. When would you use a list rather than a vector?
+when you need to go backwards 
+22. What is a container?
+a sequence of data members
+23. What should begin() and end() do for a container?
+a starting point, an end point, a definition of empty 
+24. What containers does the STL provide?
+vector,list,deque,map,multimap,unorder_map,unordered_multimap,set,multiset,unordered-set,unordered_multiset,array
+25. What is an iterator category? What kinds of iterators does the STL offer?
+input iterator,output iterator,forward iterator,bidirectional iterator, random-access iterator
+26. What operations are provided by a random-access iterator, but not a bidirectional iterator?
+can find the distance between two random access iterators
