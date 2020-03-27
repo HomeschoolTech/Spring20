@@ -65,6 +65,10 @@ public:
 
 		v.elem = nullptr;
 		v.space = 0;
+	}
+	//added destructor
+	~vector(){
+		delete[] elem;
 	}	
 		
 	T& operator[](int n)
