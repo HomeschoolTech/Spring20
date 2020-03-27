@@ -34,8 +34,8 @@ public:
 
     friend shared_pointer<T> make_shared<T>(T obj);
     
-    shared_pointer(): counter{nullptr}, pointer{nullptr}{
-        // Initialize pointer to nullptr and *counter to 0
+    shared_pointer(): counter{new int {1}}, pointer{nullptr}{
+        // Initialize pointer to nullptr and *counter to 1
     }
 
     shared_pointer(shared_pointer<T>& p): pointer{p.pointer}, counter{p.counter}{
@@ -45,7 +45,7 @@ public:
     
     shared_pointer(shared_pointer<T>&& p): pointer{p.pointer}, counter{p.counter}{
         // Object moved, set p.ptr and p.count to nullptr for safe destruction
-    	p.pointer = nullptr;
+	p.pointer = nullptr;
 	p.counter = nullptr;
     }
     
@@ -54,12 +54,10 @@ public:
         // Assign new values
         // increase  new counter
         // return *this;
-	if(counter == nullptr);
-	else --*counter;	
-	pointer = nullptr;
+	if(counter != nullptr) --*counter;
 	pointer = p.pointer;
 	counter = p.counter;
-	++*counter;
+	if(counter != nullptr) ++*counter;
 	return *this;
 
     }
@@ -70,10 +68,11 @@ public:
         // increase  new counter (depending how you implement, may not need)
         // return *this;
 	pointer = nullptr;
-	if(counter == nullptr);
-	else --*counter;	
+	if(counter != nullptr) --*counter;
 	pointer = p.pointer;
 	counter = p.counter;
+	p.pointer = nullptr;
+	p.counter = nullptr;
 	return *this;
     }
     
@@ -81,16 +80,26 @@ public:
         // If counter > 1, decrease *counter
         // If counter = 1, delete pointer and counter
         // Set pointer and counter to nullptr for safe delete of object
-	//if(*counter > 1) --*counter;
-       	//if(*counter == 1){
-	//	delete pointer;
-	//	delete counter;
+	if(counter != nullptr){
+		if(*counter > 1) --*counter;
+		if(*counter == 1){		
+			counter = nullptr;
+			pointer = nullptr;
+			delete pointer;
+			delete counter;
+		}
+	}
+	else{				//counter = nullptr
+		pointer = nullptr;
+		delete pointer;
+		delete counter;
+	}
     }
 
         
     T& operator*() const {
         // return *pointer, make sure you don't dereference the nullptr
-	//if(pointer == nullptr) throw; 
+	if(pointer == nullptr) throw; 
 	return *pointer;
     }
     

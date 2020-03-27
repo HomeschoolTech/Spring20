@@ -30,10 +30,13 @@ int main(){
 	// test move assignment 
 	//(null : NULL : NULL), (ptr3 : 9 : 2), (ptr2 : 3 : 1), (ptr : 9 : 2)
 	ptr2 = make_shared<int>(3);
-
 	// test copy assignment 
 	//(null : 3 : 2), (ptr3 : 9 : 2), (ptr2 : 3 : 2), (ptr : 9 : 2)
-	null = ptr2;      
+	null = ptr2;
+  	{	//new scope
+		shared_pointer<int> ptr4(make_shared<int>(56));
+		shared_pointer<int> ptr5;
+	}	
 	std::cout << &(*ptr)  << " : " << *ptr  << " : " << ptr.ref_count()  << std::endl;
 	std::cout << &(*ptr2) << " : " << *ptr2 << " : " << ptr2.ref_count() << std::endl;
 	std::cout << &(*ptr3) << " : " << *ptr3 << " : " << ptr3.ref_count() << std::endl;
