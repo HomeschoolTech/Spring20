@@ -22,7 +22,7 @@ public:
 			elem[i]=0; 
 	}
 
-	explicit vector(const vector<T, A>& v)
+	vector(const vector<T, A>& v)
 		: alloc{A()}, elem{alloc.allocate(v.size())}, sz{v.size()}, space{v.size()}
 	{
 		for (int i = 0; i < v.size(); i++)

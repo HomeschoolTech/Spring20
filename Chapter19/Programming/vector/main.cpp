@@ -24,4 +24,6 @@ int main(){
 	for(int i = 0; i < vec2.size(); ++i){	//size()/[]operator
 		cout << vec2[i] << ',';
 	}
+
+	vector<double> vec3 = vec;
 }
