@@ -48,6 +48,16 @@ class List{
 
 		sz++;
 	}
+	
+	void insert_front(const Iterator<T>& p)
+	{
+		insert(p, begin());
+	}
+
+	void insert_back(const Iterator<T>& p)
+	{
+		insert(p, end());
+	}
 
 	void erase(const Iterator<T>& p)
 	{
@@ -60,6 +70,16 @@ class List{
 
 		delete old_node;
 		sz--;
+	}
+
+	void erase_front()
+	{
+		erase(begin());
+	}
+
+	void erase_back()
+	{
+		erase(--end());
 	}
 
 	int size() const { return sz; }
