@@ -1,0 +1,10 @@
+hello 1 2.4
+world 5 1.7
+goodbye 0 3.65
+code 12 0.87
+array 34 81
+vector 0 4.5
+linux 93 1.9
+cpp 23 95
+point 123 9.34
+map 31 0.7

@@ -1,0 +1,50 @@
+algorithm
+a process done multiple times to achieve a desired result
+
+equal_range()
+returns the range in which all the elements are a certain value
+
+find_if()
+returns the location of a value based of a user given search criteria
+
+function object
+a object that acts like a function but can be used as a predicate and store a value
+
+generic
+can be used for any data type
+
+hash function
+a function used to map data to fixed values
+
+lambda
+a shorthand notation for defining a function object and then immediately creating it
+
+lower_bound()
+points to the first elemement not less than the value
+
+map
+a container that stores pairs of values in nodes
+
+searching
+iterating through a container to find a value
+
+sequence
+the elements stored in a container
+
+set
+a map where the objects are stored in single values not pairs
+
+sort()
+sorts a container using the < operator
+
+sorting
+arranging a container so that the elements are in a desired order
+
+stream iterator
+an iterator that iterates through I/O computations
+
+unique_copy()
+copy() but if there are consecutive identical elements one is deleted
+
+upper_bound()
+points to first element in range greater than the value
