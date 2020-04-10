@@ -13,7 +13,7 @@ class vector {
 	int space; 
 
 public:
-	vector() : alloc(), elem{nullptr}, sz{0}, space{0}{} 
+	vector() : alloc(), elem{nullptr}, sz{3}, space{0}{} 
 	
 	explicit vector(int s) 
 		: alloc{A()}, elem{alloc.allocate(s)}, sz{s}, space{s}
