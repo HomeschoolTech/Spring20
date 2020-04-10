@@ -34,7 +34,7 @@ public:
 
     friend shared_pointer<T> make_shared<T>(T obj);
     
-    shared_pointer(): counter{new int {1}}, pointer{nullptr}{
+    shared_pointer(): counter{nullptr}, pointer{nullptr}{
         // Initialize pointer to nullptr and *counter to 1
     }
 
@@ -53,8 +53,10 @@ public:
         // clear current values (make sure to decrement counter first)
         // Assign new values
         // increase  new counter
-        // return *this;
+        // return *this
 	if(counter != nullptr) --*counter;
+	pointer = nullptr;
+	counter = nullptr;
 	pointer = p.pointer;
 	counter = p.counter;
 	if(counter != nullptr) ++*counter;
@@ -67,12 +69,12 @@ public:
         // Assign new values
         // increase  new counter (depending how you implement, may not need)
         // return *this;
-	pointer = nullptr;
 	if(counter != nullptr) --*counter;
+	counter = nullptr;
+	pointer = nullptr;
 	pointer = p.pointer;
 	counter = p.counter;
-	p.pointer = nullptr;
-	p.counter = nullptr;
+	if(counter != nullptr) ++*counter;
 	return *this;
     }
     
@@ -81,10 +83,13 @@ public:
         // If counter = 1, delete pointer and counter
         // Set pointer and counter to nullptr for safe delete of object
 	if(counter != nullptr){
-		if(*counter > 1) --*counter;
-		if(*counter == 1){		
-			counter = nullptr;
+		if(*counter > 1){
+			--*counter;
 			pointer = nullptr;
+			delete pointer;
+			delete counter;
+		}
+		else if(*counter <= 1){
 			delete pointer;
 			delete counter;
 		}
@@ -124,30 +129,3 @@ template<typename T>
 shared_pointer<T> make_shared(T obj){
     return shared_pointer<T>(new T(obj));
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
