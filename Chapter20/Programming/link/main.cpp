@@ -1,44 +1,49 @@
 #include "link.h"
 #include "iostream"
 using std::cout, std::endl;
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
 
-int main(){
+TEST_CASE("a list filled with items"){
 	//create empty list
 	List<int> l();
+	Iterator<List<int>> iter = l.begin();
 	//fill list
 	//l = 0,1,2,3,4
 	for(int i = 0; i < 5; ++i){
 		l.insert_front(i);
-	}	
-	//testing i and *i
-	//address, 0
-	//address, 1 (etc)
-	for(auto& i : l){
-		cout << i << ", " << *i << endl;		
 	}
-	//testing '=='
-	//same address for 2 as above 
-	for(auto& i : l){
-		if(*i == 2) cout << i << endl;
+	REQUIRE(l.size() == 5);
+	REQUIRE(iter == l.begin());
+
+	SECTION("'*' operator returns the value at a location"){	
+		//testing i and *i
+		//address, 0
+		//address, 1 (etc)
+		//also tests "!="
+		//also tests "++"
+		for(iter = l.begin(); iter != l.end(); ++iter){
+			cout << ", " << *iter << endl;		
+		}
+		REQUIRE(l.size() == 5);
+		REQUIRE(iter == l.end());
 	}
-	//testing '!='
-	//same addresses as first skipping 3
-	for(auto& i : l){
-		if(*i != 3) cout << i << endl;
+	SECTION("== is true if iter is equal to what is being compared"){
+		//same address for 2 as above 
+		for(iter = l.begin(); iter != l.end(); ++iter){
+			if(iter == (l.begin()+2)) cout << *iter << endl;
+		}
+		REQUIRE(l.size() == 5);
+		REQUIRE(iter == l.end());
 	}
-	//testing ++
-	//same addresses as above including 3
-	Iterator<> i = l.begin();
-	while(i != l.end()){
-		cout << i << ',';
-		++i;
+	SECTION("-- goes back to the previous value"){
+		//testing --
+		//same as last but in reverse order
+		for(iter = l.end(); iter != l.begin(); --iter){
+			cout << *iter << ',';
+		}
 		cout << endl;
-	}	
-	//testing --
-	//same as last but in reverse order
-	while(i != l.begin()){
-		cout << i << ',';
-		--i;
-		cout << endl;
+		REQUIRE(l.size() == 5);
+		REQUIRE(iter == l.begin());
 	}
 }

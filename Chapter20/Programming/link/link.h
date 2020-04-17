@@ -9,11 +9,11 @@ struct Link {
 template<typename T>
 class Iterator {
 public:
-	T& operator*();
-	bool operator==(const Iterator<T>& p) const;
-	bool operator!=(const Iterator<T>& p) const;
-	Iterator<T>& operator++();
-	Iterator<T>& operator--();
+	T& operator*(){return current -> elem;}
+	bool operator==(const Iterator<T>& p) const{return current == current.p;}
+	bool operator!=(const Iterator<T>& p) const{return current != current.p;}
+	Iterator<T>& operator++(){current = current -> next; return *this;}
+	Iterator<T>& operator--(){current = current -> prev; return *this;}
 	friend class LinkedList;
 private:
 	Link<T>* current;
@@ -23,14 +23,15 @@ private:
 
 template<typename T>
 class List{
+	friend class Iterator<T>
 	List(): sz(0), tail(new Link<T>()), head(new Link<T>())
 	{
 		head->next = tail;
 		tail->prev = head;
 	}
 	
-	Iterator<T> begin() const{ return Iterator(head->next); }
-	Iterator<T> end() const{ return Iterator(tail); }
+	Iterator<T> begin() const{ return Iterator<T>(head->next); }
+	Iterator<T> end() const{ return Iterator<T>(tail); }
 
 	void insert(const Iterator<T>& p, const T& e)
 	{
