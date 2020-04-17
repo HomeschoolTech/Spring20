@@ -1,10 +1,14 @@
+#define CATCH_CONFIG_MAIM
+#include "catch.hpp"
+
+
 #include "vector.h"
 #include <iostream>
 using std::cout, std::endl;
 //comments tell what is being teste 
 //had trouble with assignment opertors recieved "allocater" error
 
-int main(){
+TEST_CASE("vectors can b sized and resized", "[vector]"){
 
 	//default constructor
 	//empty vector
@@ -16,33 +20,56 @@ int main(){
 		vec.push_back(i);
 	}
 
+	REQUIRE(vec.size() == 9);
+	REQUIRE(vec.capacity() >= 9);
+	
+	SECTION("reserving bigger changes size and capacity"){
 	//reserve
 	//0,1,2,3,4,5,6,7,8,0,0,0,0,0	five extra spaces
 	vec.reserve(5);	
-
+	REQUIRE(vec.size() == 14);
+	REQUIRE(vec.capacity() >= 14);
+	}
 	//copy constructor
 	//vec = 0,1,2,3,4,5,6,7,8 + five zeros
 	//vec2 = 0,1,2,3,4,5,6,7,8
-	vector<double> vec2(vec);
-	
+	SECTION("reserving smaller does not change size or capacity"){
+		vec.reserve(0);
+		REQUIRE(vec.size() == 5);
+		REQUIRE(vec.capacity() >= 5);
+	}
+	SECTION("resizing smaller changes size but not capacity"){
 	//resize
 	//vec = unchanged
 	//vec2 = 0,1,2,3,4	//atlers the vecto so only 5 spaces remain
-	vec2.resize(5);		
-
-	//capacity
-	//vec = 0,1,2,3,4,5,6,7,8,0,0,0,0,0
-	for(int i = 0; i < vec.capacity(); ++i){	//capacity() includes unused space
-		cout << vec[i] << ',';			//tests subscripting '[]'
+	vec.resize(5);	
+	REQUIRE(vec.size() ==5);
+	REQUIRE(vec.capacity() >= 9);	
 	}
-	cout << endl;
-
-	//size
-	//vec2 = 0,1,2,3,4
-	for(int i = 0; i < vec2.size(); ++i){	//size() includes all used space
-		cout << vec2[i] << ',';		//also tests subscripts
+	SECTION("resizing bigger changes size and capacity"){
+		vec.resize(15);
+		REQUIRE(vec.size() == 15);
+		REQUIRE(vec.capacity() >= 15);
 	}
-	
+	SECTION("copying doesn't change vector"){
+		vector<double> vec2(vec);
+		cout << "vec: (";
+		//testing subscripts
+		for(int i = 0; i < vec.size(); ++i){
+			cout << vec[i] << ',';
+		}
+		cout << endl;
+		cout << "vec: (";
+		for(int i = 0; i < vec2.size(); ++i){
+			cout << vec2[i] << ',';
+		}
+		cout << endl;
+		REQUIRE(vec.size() == 9);
+		REQUIRE(vec.capacity() >= 9);
+		REQUIRE(vec2.size() == 9);
+		REQUIRE(vec.capacity() >=9);
+	}
+
 	//copy assignment
 	//vec unchanged
 	//vec3 = 0,1,2,3,4,5,6,7,8	doesn't copy added space 
@@ -54,3 +81,5 @@ int main(){
 	//vec = vec3;
 
 }
+
+
