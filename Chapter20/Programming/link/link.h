@@ -1,6 +1,8 @@
 
 template<typename T>
 struct Link {
+public:
+	Link<T>(): elem(), prev(), next(){}
 	T elem;
 	Link<T>* prev;
 	Link<T>* next;
@@ -9,22 +11,23 @@ struct Link {
 template<typename T>
 class Iterator {
 public:
+	Iterator(Link<T>* u);
 	T& operator*(){return current -> elem;}
-	bool operator==(const Iterator<T>& p) const{return current == current.p;}
-	bool operator!=(const Iterator<T>& p) const{return current != current.p;}
+	bool operator==(const Iterator<T>& p) const{return current == p.current;}
+	bool operator!=(const Iterator<T>& p) const{return current != p.current;}
 	Iterator<T>& operator++(){current = current -> next; return *this;}
 	Iterator<T>& operator--(){current = current -> prev; return *this;}
 	friend class LinkedList;
 private:
 	Link<T>* current;
-	Iterator(Link<T>* u);
 };
 
 
 template<typename T>
 class List{
-	friend class Iterator<T>
-	List(): sz(0), tail(new Link<T>()), head(new Link<T>())
+public:
+	friend class Iterator<T>;
+	List<T>(): sz(0), tail(new Link<T>()), head(new Link<T>())
 	{
 		head->next = tail;
 		tail->prev = head;
@@ -50,14 +53,14 @@ class List{
 		sz++;
 	}
 	
-	void insert_front(const Iterator<T>& p)
+	void insert_front(const T& p)
 	{
-		insert(p, begin());
+		insert(begin(), p);
 	}
 
-	void insert_back(const Iterator<T>& p)
+	void insert_back(const T& p)
 	{
-		insert(p, end());
+		insert(end(), p);
 	}
 
 	void erase(const Iterator<T>& p)

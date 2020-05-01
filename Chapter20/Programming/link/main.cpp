@@ -6,8 +6,8 @@ using std::cout, std::endl;
 
 TEST_CASE("a list filled with items"){
 	//create empty list
-	List<int> l();
-	Iterator<List<int>> iter = l.begin();
+	List<int> l{};
+	Iterator<int> iter = l.begin();
 	//fill list
 	//l = 0,1,2,3,4
 	for(int i = 0; i < 5; ++i){
@@ -31,7 +31,7 @@ TEST_CASE("a list filled with items"){
 	SECTION("== is true if iter is equal to what is being compared"){
 		//same address for 2 as above 
 		for(iter = l.begin(); iter != l.end(); ++iter){
-			if(iter == (l.begin()+2)) cout << *iter << endl;
+			if(iter == (++(++l.begin()))) cout << *iter << endl;
 		}
 		REQUIRE(l.size() == 5);
 		REQUIRE(iter == l.end());
