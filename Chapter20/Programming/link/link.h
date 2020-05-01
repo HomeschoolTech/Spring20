@@ -1,7 +1,10 @@
 
 template<typename T>
+class List;
+
+
+template<typename T>
 struct Link {
-public:
 	Link<T>(): elem(), prev(), next(){}
 	T elem;
 	Link<T>* prev;
@@ -11,13 +14,25 @@ public:
 template<typename T>
 class Iterator {
 public:
-	Iterator(Link<T>* u);
-	T& operator*(){return current -> elem;}
-	bool operator==(const Iterator<T>& p) const{return current == p.current;}
-	bool operator!=(const Iterator<T>& p) const{return current != p.current;}
-	Iterator<T>& operator++(){current = current -> next; return *this;}
-	Iterator<T>& operator--(){current = current -> prev; return *this;}
-	friend class LinkedList;
+	Iterator(Link<T>* u): current(u){} 
+	T& operator*(){
+		if(current)
+			return current -> elem;
+		else throw;
+	}
+	bool operator==(const Iterator<T>& p) const{
+		return current == p.current;
+	}
+	bool operator!=(const Iterator<T>& p) const{
+		return current != p.current;
+	}
+	Iterator<T>& operator++(){
+		current = current -> next; return *this;
+	}
+	Iterator<T>& operator--(){
+		current = current -> prev; return *this;
+	}
+	friend class List<T>;
 private:
 	Link<T>* current;
 };
@@ -26,7 +41,6 @@ private:
 template<typename T>
 class List{
 public:
-	friend class Iterator<T>;
 	List<T>(): sz(0), tail(new Link<T>()), head(new Link<T>())
 	{
 		head->next = tail;
