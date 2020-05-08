@@ -1,3 +1,4 @@
+#include <exception>
 
 template<typename T>
 class List;
@@ -18,7 +19,7 @@ public:
 	T& operator*(){
 		if(current)
 			return current -> elem;
-		else throw;
+		else throw std::exception();
 	}
 	bool operator==(const Iterator<T>& p) const{
 		return current == p.current;
@@ -27,10 +28,14 @@ public:
 		return current != p.current;
 	}
 	Iterator<T>& operator++(){
-		current = current -> next; return *this;
+		if(current == nullptr) throw std::exception();
+		current = current -> next;
+	       	return *this;
 	}
 	Iterator<T>& operator--(){
-		current = current -> prev; return *this;
+		if(current == nullptr) throw std::exception();
+		current = current -> prev;
+	        return *this;
 	}
 	friend class List<T>;
 private:
@@ -46,27 +51,46 @@ public:
 		head->next = tail;
 		tail->prev = head;
 	}
-	
+	~List(){
+		while(begin() != end()){
+			erase(begin());
+		}
+		erase(end());
+	}
 	Iterator<T> begin() const{ return Iterator<T>(head->next); }
 	Iterator<T> end() const{ return Iterator<T>(tail); }
+	
+	List<T>(const List<T>& l){
+		for(auto it = Iterator<T>(begin()); it != end(); ++it){		
+			l.insert(it, *it);
+		}
+	}
+	List<T> operator=(List<T> l){
+		for(auto it = Iterator<T>(begin()); it != end(); ++it){		
+			l.insert(it, *it);
+		}		
+	}
 
 	void insert(const Iterator<T>& p, const T& e)
 	{
-		auto* next_node = p.current;
-		auto* prev_node = next_node->prev;
-		auto* new_node = new Link<T>;
+		if(p != nullptr){
+			auto* next_node = p.current;
+			auto* prev_node = next_node->prev;
+			auto* new_node = new Link<T>;
 	
-		new_node->elem = e;
+			new_node->elem = e;
 
-		new_node->next = next_node;
-		next_node->prev = new_node;
+			new_node->next = next_node;
+			next_node->prev = new_node;
 
-		new_node->prev = prev_node;
-		prev_node->next = new_node;
+			new_node->prev = prev_node;
+			prev_node->next = new_node;
 
-		sz++;
+			sz++;
+		}
+		else throw std::exception();
+
 	}
-	
 	void insert_front(const T& p)
 	{
 		insert(begin(), p);
