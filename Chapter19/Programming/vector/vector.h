@@ -21,6 +21,7 @@ class iterator{
 
 template <typename T, typename A>
 class vector {
+protected:
 	A alloc; 
 	T* elem; 
 	int sz; 
@@ -28,7 +29,7 @@ class vector {
 	friend class iterator<T>;
 
 public:
-	vector() : alloc(), elem{nullptr}, sz{3}, space{0}{}
+	vector() : alloc(), elem{nullptr}, sz{0}, space{0}{}
 	
 	explicit vector(int s) 
 		: alloc{A()}, elem{alloc.allocate(s)}, sz{s}, space{s}
@@ -83,7 +84,7 @@ public:
 	}
 	//added destructor
 	~vector(){
-		delete[] elem;
+		alloc.deallocate(elem,space);
 	}	
 	iterator<T> begin(){
 		return elem[0];

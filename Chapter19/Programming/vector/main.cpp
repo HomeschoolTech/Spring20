@@ -1,42 +1,38 @@
-#define CATCH_CONFIG_MAIM
+#define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-
-
 #include "vector.h"
 #include <iostream>
-using std::cout, std::endl;
+using std::cout;
+using std::endl;
 //comments tell what is being teste 
 //had trouble with assignment opertors recieved "allocater" error
 
-TEST_CASE("vectors can b sized and resized", "[vector]"){
-
+TEST_CASE("vectors can be sized and resized", "[vector]"){
+	
 	//default constructor
 	//empty vector
 	vector<double> vec;
 
 	//push_back
 	//0,1,2,3,4,5,6,7,8
-	for(int i = 0; i < 9; ++i){
+	for(double i = 0; i < 9; ++i){
 		vec.push_back(i);
 	}
 
 	REQUIRE(vec.size() == 9);
 	REQUIRE(vec.capacity() >= 9);
 	
-	SECTION("reserving bigger changes size and capacity"){
+	SECTION("reserving bigger changes capacity but not size"){
 	//reserve
 	//0,1,2,3,4,5,6,7,8,0,0,0,0,0	five extra spaces
 	vec.reserve(5);	
-	REQUIRE(vec.size() == 14);
+	REQUIRE(vec.size() == 9);
 	REQUIRE(vec.capacity() >= 14);
 	}
-	//copy constructor
-	//vec = 0,1,2,3,4,5,6,7,8 + five zeros
-	//vec2 = 0,1,2,3,4,5,6,7,8
 	SECTION("reserving smaller does not change size or capacity"){
 		vec.reserve(0);
-		REQUIRE(vec.size() == 5);
-		REQUIRE(vec.capacity() >= 5);
+		REQUIRE(vec.size() == 9);
+		REQUIRE(vec.capacity() >= 9;
 	}
 	SECTION("resizing smaller changes size but not capacity"){
 	//resize
@@ -79,7 +75,4 @@ TEST_CASE("vectors can b sized and resized", "[vector]"){
 	//vec = 0,1,2,3,4,5,6,7,8
 	//vec3 = 0,1,2,3,4,5,6,7,8
 	//vec = vec3;
-
 }
-
-
