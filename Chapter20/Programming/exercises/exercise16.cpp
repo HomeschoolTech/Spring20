@@ -1,27 +1,32 @@
-#include "vector.h"
 #include "iostream"
 #include "memory"
+#include "pvector.h"
 using std::allocator;
-
-template <typename T,typename A = allocator<T> >
-class ovector : vector{
+//works but T must = int
+//didn't know what type to return for [] operators
+template <typename T>
+class ovector : public pvector<T>{
 public:
-	T& operator[](int n) override{
-		return elem[n]&;
+	T& operator[](int n) {
+		std::cout << "ovector subscript" << std::endl;
+		return *((this->elem)[n]);
 	}	
-	const T& operator[](int n) const override{
-		return elem[n]&;
+	const T& operator[](int n) const{
+		std::cout << "ovector const subscript" << std::endl;
+		return *((this->elem)[n]);
 	}
-		
 };
 
 int main(){
-	ovector<int*> ov;
+	ovector<int> ov;
 	for(int i = 0; i < 10; ++i){
-		ov.push_back(&i);
+		ov.push_back(new int(i));
 	}
-	for(auto& i : ov){
-		std::cout << *i;
+	for(int i = 0; i < ov.size(); ++i){
+		std::cout << "ov[" << i << "] = " << ov[i] << std::endl;
 	}
-	std::cout << std::endl;
+	/*for(auto& i : ov){
+		std::cout << '(' << *i << ", ";
+	}*/
+	std::cout << ')' << std::endl;
 }

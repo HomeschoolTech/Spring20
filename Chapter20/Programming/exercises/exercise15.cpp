@@ -3,19 +3,26 @@
 #include "memory"
 using namespace std;
 template <typename T>
-class pvector : vector<T>{
+class pvector : public vector<T*>{
 public:
-	~vector() override{
-		delete[] *elem;
+	~pvector(){
+		cout << "pvector destructor" << endl;
+		for(int i = 0; i < this->size(); ++i){
+			delete (this->elem)[i];
+		}
 	}
 };
 int main(){
-	pvector <int*> pv;
+	
+	pvector <int> pv;
+	
 	for(int i = 0; i < 10; ++i){
-		pv.push_back(&i);
+		pv.push_back(new int (i));
 	}
-	for(auto& i : pv){
+	/*for(auto& i : pv){
 		std::cout << *i;
+	}*/
+	for(int i = 0; i < pv.size(); ++i){
+		cout << "pv[" << i << "] = " << *pv[i] << endl;
 	}
-	std::cout << std::endl;
 }
